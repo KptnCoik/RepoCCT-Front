@@ -1,28 +1,67 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+<!--             <img class="ui tiny image" src="./assets/Logo-VueCCT.png">
+ -->
+ <div class="barremenu">
+      <div class="ui four item compact menu fixed-bottom" v-if="authenticated">
+        <router-link to="/MonProfil">
+          <a class="nav-link">
+            <i class="user icon"></i>Profil
+          </a>
+        </router-link>
+        <router-link to="/Liste">
+          <a class="nav-link">
+            <i class="fas fa-users"></i>Joueurs
+          </a>
+        </router-link>
+          <a class="nav-link">
+            <i class="fas fa-list-ol"></i>Moi
+          </a>
+        <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>
+          <a class="nav-link" >
+            <i class="sign out alternate icon"></i>Deconnexion</a>
+        </router-link>
+      </div>
+    </div>
+    <router-view @authenticated="setAuthenticated"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      authenticated: false
+    }
+  },
+  methods : {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+    logout() {
+      this.authenticated = false;
+      localStorage.clear()
+    }
   }
 }
 </script>
 
 <style>
+body {
+  background-color: #39CCCC;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  max-width:600px;
+  margin-top:20px;
+  margin-left:auto;
+  margin-right:auto;
 }
+
 </style>
