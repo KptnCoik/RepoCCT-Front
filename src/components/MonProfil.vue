@@ -86,5 +86,6 @@ export default {
 #resultat {
     margin-top: 20px;
     padding-left: 0px;
+    padding-right:0px;
 }
 </style>

@@ -74,7 +74,6 @@ export default {
         this.tournoiGagne=response.data
         if(response.data.annee!=null) {
             this.$parent.gagne=response.data
-            console.log('reponse',response.data.annee)
         }
         },(response) => {console.log('erreur',response)
         })
@@ -84,7 +83,6 @@ export default {
         this.tournoiPerd=response.data
         if(response.data.annee!=null) {
             this.$parent.perd=response.data
-            console.log('reponse',response.data.annee)
         }
         },(response) => {console.log('erreur',response)
         })
