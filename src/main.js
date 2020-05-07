@@ -5,7 +5,8 @@ import VueLocalStorage from 'vue-localstorage'
 import LoginComponent from './components/LoginComponent'
 import MonProfil from './components/MonProfil'
 import Joueur from './components/Joueur'
-import Liste from './components/Liste'
+import ListeJoueur from './components/ListeJoueur.vue'
+import ListeTournoi from './components/ListeTournoi.vue'
 
 Vue.use(VueLocalStorage)
 
@@ -31,15 +32,20 @@ const router =  new VueRouter({
         component: MonProfil
     },
     {
-      path: "/Liste",
-      name: "Liste",
-      component: Liste
+      path: "/ListeJoueur",
+      name: "ListeJoueur",
+      component: ListeJoueur
   },
     {
       path: "/Joueur/:id",
       name: "Joueur",
       component: Joueur
-  }
+  },
+  {
+    path: "/ListeTournoi",
+    name: "ListeTournoi",
+    component: ListeTournoi
+}
   ]
 })
 

@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="afficheDetailTournoi" id="partieResultat"><b>
+        <div v-if="afficheDetailTournoi" id="partieResultatTournoi"><b>
             <p v-if="gagnant.id==idJoueur">Victoire
                 <i class="fas fa-trophy-alt" id="tropheeSpecial"></i>
             </p>
@@ -206,6 +206,12 @@ export default {
   display: none;
 }
 #partieResultat{
+    width: 62%;
+    text-align: left;
+    padding-left: 0px;
+    padding-top: 10px;
+}
+#partieResultatTournoi{
     width: 62%;
     text-align: left;
     padding-left: 20px;

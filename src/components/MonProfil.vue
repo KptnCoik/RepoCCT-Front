@@ -16,7 +16,7 @@
     </div>
     <div class="ui inverted divider"></div>
     <div id="boutonTournoi" class="container">
-        <BoutonTournoi :tournoi="tournois"></BoutonTournoi> 
+        <BoutonTournoi :tournoi="tournois" :showTitre="true"></BoutonTournoi> 
     </div>
     <div id="resultat" class="container" v-if="tournoisSelected!=null && tournoisSelected.annee!=null">
         <ResultatTournoi :id="tournoisSelected.id" :idJoueur="user.id"></ResultatTournoi>

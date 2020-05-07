@@ -1,5 +1,5 @@
 <template>
-  <div id="Liste" class="container">
+  <div id="ListeJoueur" class="container">
       <h2>Tout les participants du CCT</h2>
       <!-- <div v-for="item in liste" :key="item.id">
           <router-link :to="{name: 'Joueur', params: {id : item.id }}">
@@ -32,7 +32,7 @@ import axios from 'axios'
 import Trophee from './TropheeComponent'
 
 export default {
-  name: 'Liste',
+  name: 'ListeJoueur',
   components:{Trophee},
   data() {
       return {
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style scoped>
-#Liste{
+#ListeJoueur{
     margin-bottom:50px;
     
 }

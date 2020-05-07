@@ -6,17 +6,19 @@
       <div class="ui four item compact menu fixed-bottom" v-if="authenticated">
         <router-link to="/MonProfil">
           <a class="nav-link">
-            <i class="user icon"></i>Profil
+            <i class="user icon"></i> Profil
           </a>
         </router-link>
-        <router-link to="/Liste">
+        <router-link to="/ListeJoueur">
           <a class="nav-link">
-            <i class="fas fa-users"></i>Joueurs
+            <i class="fas fa-users"></i> Joueurs
           </a>
         </router-link>
+        <router-link to="/ListeTournoi">
           <a class="nav-link">
-            <i class="fas fa-list-ol"></i>Moi
+            <i class="fas fa-swords"></i> Classement
           </a>
+        </router-link>
         <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>
           <a class="nav-link" >
             <i class="sign out alternate icon"></i>Deconnexion</a>

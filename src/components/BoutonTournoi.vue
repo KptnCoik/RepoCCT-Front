@@ -1,6 +1,6 @@
 <template>
     <div id="buttonTournoi">
-        <h3>Tournois</h3>
+        <h3 v-if="showTitre">Tournois</h3>
         <div id="bouton" v-for="item in tournoi" :key="item.id">
         <button v-if="isTournoisSelected==item.id" @click="setTournoiSelected(item)"
         class="circular mini ui button" id="boutonAnnee">{{item.annee}}</button>
@@ -22,6 +22,9 @@ export default {
     props : {
         tournoi:{
             type: Array
+        },
+        showTitre:{
+            type:Boolean
         }
     },
     computed : {
@@ -39,8 +42,14 @@ export default {
                 this.$parent.tournoisSelected = null
             } else {
             this.tournoisSelected = id
-            this.$parent.tournoisSelected = id
+            this.$parent.tournoisSelected = id 
+            this.$parent.showEpreuvesClassement = true           
             }
+        }
+    },
+    watch : {
+        isTournoisSelected() {
+            this.$parent.loadEpreuves(this.isTournoisSelected)
         }
     }
 }
