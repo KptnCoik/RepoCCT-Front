@@ -6,6 +6,10 @@
             <button v-else @click="setEpreuveSelected(item)"
             class="circular mini ui button" id="boutonEpreuve">{{item.nom}}</button>
         </div>
+        <div>
+            <button @click="setShowClassement()" class="circular mini ui button"
+             id="ClassementGeneral">Classement Général</button>
+        </div>
     </div>
 </template>
 
@@ -42,15 +46,23 @@ export default {
             if (this.epreuveSelected == null){
             this.epreuveSelected = id 
             this.$parent.epreuveSelected = id 
+            this.$parent.showClassement = false
             }
             else if(id.id == this.epreuveSelected.id){
                 this.epreuveSelected = null
                 this.$parent.epreuveSelected = null
+                this.$parent.showClassement = false
             } else {
             this.epreuveSelected = id 
             this.$parent.epreuveSelected = id 
+            this.$parent.showClassement = false
             }
             
+        },
+        setShowClassement() {
+            this.epreuveSelected = null
+            this.$parent.epreuveSelected = null
+            this.$parent.showClassement = !this.$parent.showClassement
         }
     },
     mounted() {
@@ -68,14 +80,18 @@ export default {
 <style scoped>
 #buttonEpreuves {
     margin-top : 20px;
-
 }
-#bouton{
+#bouton {
     display:inline-table;
     padding:4px;   
 }
-
-#boutonEpreuve{
-background-color:rgb(93, 158, 219);
+#boutonEpreuve { 
+background-color:rgb(10, 99, 182);
+color: azure;
+}
+#ClassementGeneral {
+background-color:rgb(16, 189, 88);
+margin-top: 15px;
+color:azure;
 }
 </style>

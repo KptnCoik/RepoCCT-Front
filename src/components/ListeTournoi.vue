@@ -9,6 +9,12 @@
         <ClassementEpreuveIndividuelle v-bind:epreuve="epreuveSelected">
         </ClassementEpreuveIndividuelle>
     </div>
+    <div v-if="epreuveSelected != null && epreuveSelected.id != null && epreuveSelected.type == 'Equipe'">
+        <ClasseementEpreuveEquipe v-bind:epreuve="epreuveSelected">
+        </ClasseementEpreuveEquipe>
+    </div>
+    <ClassementTournoi v-bind:tournoi="tournoisSelected" v-if="showClassement==true">
+    </ClassementTournoi>
   </div>
 </template>
 
@@ -17,16 +23,21 @@ import axios from'axios'
 import BoutonTournoi from './BoutonTournoi'
 import BoutonEpreuves from './BoutonEpreuves'
 import ClassementEpreuveIndividuelle from './ClassementEpreuveIndividuelle'
+import ClasseementEpreuveEquipe from './ClassementEpreuveEquipe'
+import ClassementTournoi from './ClassementTournoi'
 
 export default {
   name: 'ListeTournoi',
-  components:{BoutonTournoi,BoutonEpreuves,ClassementEpreuveIndividuelle},
+  components:{BoutonTournoi,BoutonEpreuves,
+  ClassementEpreuveIndividuelle,ClasseementEpreuveEquipe,
+  ClassementTournoi},
   data() {
       return {
           tournois:[],
           epreuves:[],
           tournoisSelected:{type:Object},
-          epreuveSelected:{type:Object}
+          epreuveSelected:{type:Object},
+          showClassement : false
         }
     },
     methods: {
@@ -49,6 +60,7 @@ export default {
     watch : {
         tournoisSelected () {
             this.epreuveSelected = null
+            this.showClassement = false
         }
     }
 }
