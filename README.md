@@ -10,7 +10,7 @@ Il est important de garder à l'esprit qu'il s'agit avant tout d'un moment de di
 
 Nous avons choisi d'organiser notre tournoi pendant le mois de Juin aux alentours de Nice, notre région de résidence, pour pouvoir profiter des beaux jours propices aux activités de plein air.
 
-Historiquement, cet évènement a été créé aux 2Alpes par des amis qui nous y conviaient chaque année lors du mois de Septembre,soit la mi-saision,  pour mieux profiter de la station.
+Historiquement, cet évènement a été créé aux 2Alpes par des amis qui nous y conviaient chaque année lors du mois de Septembre,soit à la mi-saision,  pour mieux profiter de la station.
 
 La première édition de ce tournoi organisé à Nice, remonte à  l'année 2016.
 
