@@ -2,16 +2,21 @@
     <div id="ClassementEpreuveIndividuelle">
     <table class="ui unstackable basic table">
         <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Points</th>
+                <th>Position</th>
+            </tr>
         </thead>
         <tbody>
             <tr v-for="(item,index) in classement" :key="item.id">
             <td>
                 <h4 class="ui image header">
                 <div v-if="item.id == userId" class="content" id="user">
-                    {{item.nom}} 
+                    {{item.username}} 
                 </div>
                 <div v-else class="content">
-                    {{item.nom}}
+                    {{item.username}}
                 </div>
                 <div v-if="bonus[index]==true" class="sub header">
                     Bonus
@@ -53,27 +58,27 @@ export default {
     },
     methods : {
         loadClassement(epreuve) {
-        axios.get('http://localhost:9090/Epreuve/Classement/'+epreuve).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Epreuve/Classement/'+epreuve).then((response)=> {
         this.classement=response.data
         },(response) => {console.log('erreur',response)
         })
         }, loadPoints(epreuve) {
-        axios.get('http://localhost:9090/Epreuve/ListPointsIndividuel/'+ epreuve).then((response)=> 
+        axios.get('http://192.168.1.12:9090/Epreuve/ListPointsIndividuel/'+ epreuve).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreurTournois',response)
             })
       },loadPosition(epreuve) {
-        axios.get('http://localhost:9090/Epreuve/ListPositionEpreuveIndividuelle/'+ epreuve).then((response)=> 
+        axios.get('http://192.168.1.12:9090/Epreuve/ListPositionEpreuveIndividuelle/'+ epreuve).then((response)=> 
             {   this.position = response.data
             },(response) => {console.log('erreurTournois',response)
             })
       }, loadBonus(epreuve) {
-        axios.get('http://localhost:9090/Epreuve/ListBonusEpreuve/'+ epreuve).then((response)=> 
+        axios.get('http://192.168.1.12:9090/Epreuve/ListBonusEpreuve/'+ epreuve).then((response)=> 
             {   this.bonus = response.data
             },(response) => {console.log('erreur bonus',response)
             })
       }, loadMalus(epreuve) {
-        axios.get('http://localhost:9090/Epreuve/ListMalusEpreuve/'+ epreuve).then((response)=> 
+        axios.get('http://192.168.1.12:9090/Epreuve/ListMalusEpreuve/'+ epreuve).then((response)=> 
             {   this.malus = response.data
             },(response) => {console.log('erreur malus',response)
             })
@@ -101,6 +106,7 @@ export default {
 
 <style scoped>
 #ClassementEpreuveIndividuelle {
+    display: inline-block;
     margin-top : 30px;
     margin-bottom : 70px;
 }

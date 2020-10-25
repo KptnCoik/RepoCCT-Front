@@ -42,13 +42,13 @@ export default {
     },
     methods: {
         loadTournois() {
-            axios.get('http://localhost:9090/Tournoi').then((response)=> 
+            axios.get('http://192.168.1.12:9090/Tournoi').then((response)=> 
             {   this.tournois = response.data
             },(response) => {console.log('erreurTournois',response)
             })
         },
         loadEpreuves(id) {
-            axios.get('http://localhost:9090/Tournoi/Epreuves/'+ id).then((response)=> 
+            axios.get('http://192.168.1.12:9090/Tournoi/Epreuves/'+ id).then((response)=> 
             {   this.epreuves = response.data
             },(response) => {console.log('error',response)
             })

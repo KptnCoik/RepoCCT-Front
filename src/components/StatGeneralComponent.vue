@@ -1,13 +1,13 @@
 <template>
   <div id="StatGeneral">
-    <table class="ui small definition table unstackable" id="montableau">
+    <!-- <table class="ui small definition table unstackable" id="montableau">
       <tbody>
         <tr>
           <td class="two wide column">Particiption</td>
-          <td>{{participations}} / 4</td>
+          <td>{{participations}} / 5</td>
         </tr>  
       </tbody>
-    </table>
+    </table> -->
     <h4 id="trophees" class="ui horizontal divider header">Trophees</h4>
     <Trophee :id="user.id"></Trophee>
   </div>
@@ -39,13 +39,13 @@ export default {
     },
     methods: {
         loadJoueur(id) {
-            axios.get('http://localhost:9090/Joueur/'+id).then((response)=> {
+            axios.get('http://192.168.1.12:9090/Joueur/'+id).then((response)=> {
             this.user=response.data
             },(response) => {console.log('erreur',response)
         })
         },
         loadTournois(id) {
-        axios.get('http://localhost:9090/Joueur/Tournois/'+id).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Joueur/Tournois/'+id).then((response)=> {
         this.tournois=response.data
         },(response) => {console.log('erreur',response)
         })
@@ -78,6 +78,7 @@ export default {
 }
 #montableau {
 margin:0;
+height: 55%;
     
 }
 #trophees {

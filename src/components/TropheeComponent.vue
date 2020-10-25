@@ -2,7 +2,7 @@
 <div id="TropheeComponent">
     {{joueurCharge}} {{gagneCharge}} {{perdCharge}}
     
-    <i id="items" v-for="item in trophees" :key="item.id" :class="item.icone" 
+    <i id="items" v-for="item in trophees" :key="item.id" :class="item.icone" :style="stylesSelect[item]"
     @click="setShowDetail(item)">
     </i>
     
@@ -35,9 +35,11 @@ export default {
   data() {
       return {
           trophees:[],
+          stylesSelect :[],
           showDetail:false,
           showVictory:false,
           showLoose:false,
+          styleSelected : String,
           tournoiGagne:{type:Object},
           tournoiPerd:{type: Object},
           selectedItem:{type:Object}
@@ -46,6 +48,11 @@ export default {
     props: {
         id:{
             type: Number
+        }
+    },
+    mounted() {
+        for(var i=0; i<100; i++) {
+            this.stylesSelect[i] = "";
         }
     },
     computed: {
@@ -64,13 +71,13 @@ export default {
     },
     methods: {
         loadTrophees(id) {
-        axios.get('http://localhost:9090/Trophee/Joueur/'+id).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Trophee/Joueur/'+id).then((response)=> {
         this.trophees=response.data
         },(response) => {console.log('erreur',response)
         })
         },
         loadTournoiGagne(id) {
-        axios.get('http://localhost:9090/Joueur/TournoiGagne/'+id).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Joueur/TournoiGagne/'+id).then((response)=> {
         this.tournoiGagne=response.data
         if(response.data.annee!=null) {
             this.$parent.gagne=response.data
@@ -79,7 +86,7 @@ export default {
         })
         },
         loadTournoiPerd(id) {
-        axios.get('http://localhost:9090/Joueur/TournoiPerd/'+id).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Joueur/TournoiPerd/'+id).then((response)=> {
         this.tournoiPerd=response.data
         if(response.data.annee!=null) {
             this.$parent.perd=response.data
@@ -93,7 +100,9 @@ export default {
             if(this.selectedItem==id){
                 this.selectedItem=id
                 this.showDetail=!this.showDetail
+                this.stylesSelect[id] = ""
             } else {
+                this.stylesSelect[id] = ""
                 this.selectedItem=id
                 this.showDetail=true
             }
@@ -115,15 +124,29 @@ export default {
 
 <style scoped>
 #TropheeComponent{
+    display:block;
     margin-bottom: auto;
     margin-top: auto;
 }
-
-#items{
-    margin:8px;
+@media (min-width: 600px){
+        #items{
+    font-size:40px; 
+    margin:15px;  
+    }
+    #tropheeSpecial{
+    font-size:70px;
+}
 }
 
+
+
+@media (max-width: 599px){
 #tropheeSpecial{
+    font-size:40px;
+}
+#items{
     font-size:23px;
+    margin:8px;  
+}
 }
 </style>

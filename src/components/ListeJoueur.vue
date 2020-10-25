@@ -1,22 +1,17 @@
 <template>
   <div id="ListeJoueur" class="container">
       <h2>Tout les participants du CCT</h2>
-      <!-- <div v-for="item in liste" :key="item.id">
-          <router-link :to="{name: 'Joueur', params: {id : item.id }}">
-              Joueur => {{item.nom}}
-          </router-link>
-      </div> -->
         <div class="ui cards" v-for="item in liste" :key="item.id" id="listeNom">
             <div class="card">
                 <div class="content">
                     <router-link :to="{name: 'Joueur', params: {id : item.id }}">
-                        <img class="left floated tiny ui image" src="../assets/boy.png">
+                        <img class="left floated tiny ui image" :src="setImageUrl(item.id)">
                     </router-link>
                     <div class="header">
                         <router-link :to="{name: 'Joueur', params: {id : item.id }}">
-                            <a class="header">{{item.nom}}</a>
+                            <a class="header">{{item.username}}</a>
                         </router-link>
-                        <div class="description">
+                        <div class="description" id="tropheJoueur">
                             <Trophee :id="item.id"></Trophee>
                         </div>
                     </div>
@@ -41,17 +36,30 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:9090/Joueur/all/').then((response)=> {
+        axios.get('http://192.168.1.12:9090/Joueur/all/').then((response)=> {
         this.liste=response.data
         },(response) => {console.log('erreur',response)
         })
+    },
+    methods : {
+        setImageUrl(id) {
+            return 'http://192.168.1.12:9090/filesByJoueur/'+id;
+        }
     }
 }
 </script>
 
 <style scoped>
 #ListeJoueur{
-    margin-bottom:50px;
+    display: inline-block;
+    margin-bottom:100px;
+    margin-left:auto;
+    margin-right: auto;
     
+}
+
+
+#tropheJoueur {
+    margin-left:90px;
 }
 </style>

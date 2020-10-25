@@ -3,10 +3,10 @@
     <div class="" id="partieHaut">
         <div class="ui fluid card " id="partieAvatar">
             <div class="image">
-                <img src="../assets/boy.png">
+                <img :src="setImageUrl()">
             </div>              
             <div class="header" style="text-align:center;">
-                <h3>{{user.nom}}</h3>
+                <h3>{{user.username}}</h3>
             </div>
             <div class="description" v-if="this.gagne.annee!=null" >
                 <i class="far fa-star"></i> {{gagne.annee}}
@@ -16,7 +16,7 @@
     </div>
     <div class="ui inverted divider"></div>
     <div id="partieTournoi" class="container">
-        <BoutonTournoi :tournoi="tournois" :showTitre="true"></BoutonTournoi> 
+        <BoutonTournoi :tournoi="tournois" :showTitre="true" :statPerso="true"></BoutonTournoi> 
     </div>
     <div id="resultat" class="container" v-if="tournoisSelected!=null && tournoisSelected.annee!=null">
         <ResultatTournoi :id="tournoisSelected.id" :idJoueur="user.id"></ResultatTournoi>
@@ -47,25 +47,32 @@ export default {
     },
     methods: {
         loadJoueur(id) {
-            axios.get('http://localhost:9090/Joueur/'+id).then((response)=> {
+            axios.get('http://192.168.1.12:9090/Joueur/'+id).then((response)=> {
             this.user=response.data
             },(response) => {console.log('erreur',response)
             })
         },
         loadTournois(id) {
-            axios.get('http://localhost:9090/Joueur/Tournois/'+id).then((response)=> {
+            axios.get('http://192.168.1.12:9090/Joueur/Tournois/'+id).then((response)=> {
             this.tournois=response.data
             },(response) => {console.log('erreur',response)
             })
         },
         setTournoiSelect(id) {
             this.tournoisSelected = id
+        },
+        setImageUrl() {
+            return 'http://192.168.1.12:9090/filesByJoueur/'+this.user.id;
         }
     }
 }
 </script>
 
 <style scoped>
+#Joueur {
+    margin-bottom: 50px;
+    display: inline-block;
+}
 #partieHaut {
     display:flex;
     justify-content: space-between;

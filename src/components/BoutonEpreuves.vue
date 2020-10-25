@@ -37,7 +37,7 @@ export default {
     },
     methods : {
         loadEpreuves(epreuve) {
-        axios.get('http://localhost:9090/Tournoi/Epreuves/'+epreuve).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Tournoi/Epreuves/'+epreuve).then((response)=> {
         this.epreuves=response.data
         },(response) => {console.log('erreur',response)
         })

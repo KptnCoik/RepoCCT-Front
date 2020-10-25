@@ -7,6 +7,7 @@ import MonProfil from './components/MonProfil'
 import Joueur from './components/Joueur'
 import ListeJoueur from './components/ListeJoueur.vue'
 import ListeTournoi from './components/ListeTournoi.vue'
+import Options from './components/Options.vue'
 
 Vue.use(VueLocalStorage)
 
@@ -45,7 +46,12 @@ const router =  new VueRouter({
     path: "/ListeTournoi",
     name: "ListeTournoi",
     component: ListeTournoi
-}
+  },
+  {
+    path: "/Options",
+    name: "Options",
+    component: Options
+  }
   ]
 })
 

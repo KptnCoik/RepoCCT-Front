@@ -3,7 +3,7 @@
     <div class="" id="partieHaut">
         <div class="ui fluid card " id="partieAvatar">
             <div class="image">
-                <img src="../assets/boy.png">
+                <img :src="this.lienImage" id="imageAvatar">
             </div>              
             <div class="header" style="text-align:center;" id="test">
                 <h3>{{user.pseudo}}</h3>
@@ -15,8 +15,9 @@
         <Stat :id="user.id"></Stat>
     </div>
     <div class="ui inverted divider"></div>
+    
     <div id="boutonTournoi" class="container">
-        <BoutonTournoi :tournoi="tournois" :showTitre="true"></BoutonTournoi> 
+        <BoutonTournoi :tournoi="tournois" :showTitre="true" :statPerso="true"></BoutonTournoi> 
     </div>
     <div id="resultat" class="container" v-if="tournoisSelected!=null && tournoisSelected.annee!=null">
         <ResultatTournoi :id="tournoisSelected.id" :idJoueur="user.id"></ResultatTournoi>
@@ -24,7 +25,6 @@
   </div>
 </template>
 <script>
-
 import Stat from './StatGeneralComponent'
 import BoutonTournoi from './BoutonTournoi'
 import ResultatTournoi from './ResultatTournoiJoueur'
@@ -38,7 +38,9 @@ export default {
           user:{type: Object},
           gagne:{type:Object},
           tournoisSelected:{type:Object},
-          tournois:[]
+          tournois:[],
+          lienImage:{type: String},
+          images:{type: Object}
         }
     },
     created() {
@@ -48,10 +50,15 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:9090/Joueur/Tournois/'+this.user.id).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Joueur/Tournois/'+this.user.id).then((response)=> {
         this.tournois=response.data
         },(response) => {console.log('erreur',response)
         })
+        axios.get('http://192.168.1.12:9090/filesByJoueur/'+this.user.id).then((response)=> {
+        this.images=response.data
+        },(response) => {console.log('erreur',response)
+        })
+        this.lienImage = 'http://192.168.1.12:9090/filesByJoueur/'+this.user.id
     },
     methods : {
         setTournoiSelect(id) {
@@ -64,6 +71,7 @@ export default {
 <style scoped>
 #MonProfil{
     margin-bottom: 50px;
+    display: inline-block;
     
 }
 #partieHaut {
@@ -87,5 +95,11 @@ export default {
     margin-top: 20px;
     padding-left: 0px;
     padding-right:0px;
+}
+#imageAvatar {
+overflow: hidden;
+height: 130px;
+ width: 125px;
+  
 }
 </style>

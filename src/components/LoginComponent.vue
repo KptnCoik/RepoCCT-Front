@@ -3,14 +3,14 @@
       <img alt="Vue logo" src="../assets/Logo-VueCCT.png">
      <div class="ui form" id="inputConnexion">
             <div class="field">
-            <label>Username</label>
+            <!-- <label>Username</label> -->
             <div class="ui left icon input">
                 <input type="text" name="username" v-model="input.username" v-on:keyup.enter="login()" placeholder="Username" />
                 <i class="user icon"></i>
             </div>
             </div>
             <div class="field">
-            <label>Password</label>
+            <!-- <label>Password</label> -->
             <div class="ui left icon input">
                 <input type="password" name="password" v-model="input.password" v-on:keyup.enter="login()" placeholder="Password" />
                 <i class="lock icon"></i>
@@ -50,7 +50,7 @@ export default {
     methods: {
         login() {
             if(this.input.username != "" && this.input.password != "") {
-                axios.get('http://localhost:9090/Joueur/SignIn/'+ this.input.username+'/'+ this.input.password).then((response)=> {
+                axios.get('http://192.168.1.12:9090/Joueur/SignInS/'+ this.input.username+'/'+ this.input.password).then((response)=> {
                     this.$localStorage.set('user', JSON.stringify(response.data))
                     this.$localStorage.set('idUser', JSON.stringify(response.data.id))
                     this.refus=false

@@ -43,13 +43,13 @@ export default {
     },
     methods:{
         loadPoints(id) {
-               axios.get('http://localhost:9090/Joueur/PointsEpreuve/'+this.idJoueur+'/'+id).then((response)=> 
+               axios.get('http://192.168.1.12:9090/Joueur/PointsEpreuve/'+this.idJoueur+'/'+id).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreur points',response)
             })
         },
         loadPosition(id) {
-            axios.get('http://localhost:9090/Joueur/PositionEpreuveIndividuel/'+this.idJoueur+'/'+ id).then((response)=> 
+            axios.get('http://192.168.1.12:9090/Joueur/PositionEpreuveIndividuel/'+this.idJoueur+'/'+ id).then((response)=> 
                 {   this.position = response.data
                 },(response) => {console.log('erreur position',response)
                 })

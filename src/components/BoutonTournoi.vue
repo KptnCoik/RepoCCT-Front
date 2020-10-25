@@ -25,6 +25,9 @@ export default {
         },
         showTitre:{
             type:Boolean
+        },
+        statPerso : {
+            type:Boolean
         }
     },
     computed : {
@@ -49,7 +52,9 @@ export default {
     },
     watch : {
         isTournoisSelected() {
-            this.$parent.loadEpreuves(this.isTournoisSelected)
+            if(this.statPerso != true){
+                this.$parent.loadEpreuves(this.isTournoisSelected)
+            }
         }
     }
 }
@@ -61,7 +66,7 @@ export default {
     margin-right: auto;
 }
 #bouton{
-    display:inline;
+    display:inline-block;
     padding:3px;
 }
 

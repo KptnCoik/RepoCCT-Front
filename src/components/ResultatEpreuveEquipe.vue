@@ -14,7 +14,7 @@
                 <div class="ui horizontal list" v-for="item in equipe" :key="item.id">
                     <div class="item" id="equipiers">
                         <img class="ui avatar image" 
-                        src="../assets/boy.png">{{item.nom}}
+                        :src="setUrlImage(item.id)">{{item.username}}
                     </div>
                 </div>
             </div>
@@ -45,22 +45,25 @@ export default {
     },
     methods:{
         loadPoints(id) {
-               axios.get('http://localhost:9090/Joueur/PointsEpreuve/'+this.idJoueur+'/'+id).then((response)=> 
+               axios.get('http://192.168.1.12:9090/Joueur/PointsEpreuve/'+this.idJoueur+'/'+id).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreur points',response)
             })
         },
         loadPosition(id) {
-            axios.get('http://localhost:9090/Joueur/PositionEpreuveEquipe/'+this.idJoueur+'/'+ id).then((response)=> 
+            axios.get('http://192.168.1.12:9090/Joueur/PositionEpreuveEquipe/'+this.idJoueur+'/'+ id).then((response)=> 
                 {   this.position = response.data
                 },(response) => {console.log('erreur position',response)
                 })
         },
         loadEquipe(id) {
-            axios.get('http://localhost:9090/Joueur/EquipeEpreuve/'+this.idJoueur+'/'+ id).then((response)=> 
+            axios.get('http://192.168.1.12:9090/Joueur/EquipeEpreuve/'+this.idJoueur+'/'+ id).then((response)=> 
                 {   this.equipe = response.data
                 },(response) => {console.log('erreur bonus',response)
                 })
+        },
+        setUrlImage(id) {
+            return 'http://192.168.1.12:9090/filesByJoueur/'+id;
         }
     },
     mounted() {

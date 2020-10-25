@@ -2,16 +2,21 @@
     <div id="ClassementTournoi">
     <table class="ui unstackable basic table">
         <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Points</th>
+                <th>Position</th>
+            </tr>
         </thead>
         <tbody v-for="(item,index) in classement" :key="item.id">
             <tr v-if="index==0">
             <td>
                 <h4 class="ui image header">
                 <div v-if="item.id == userId" class="content" id="user">
-                    {{item.nom}} 
+                    {{item.username}} 
                 </div>
                 <div v-else class="content">
-                    {{item.nom}}
+                    {{item.username}}
                 </div>
             </h4></td>
             <td>
@@ -25,10 +30,10 @@
             <td>
                 <h4 class="ui image header">
                 <div v-if="item.id == userId" class="content" id="user">
-                    {{item.nom}} 
+                    {{item.username}} 
                 </div>
                 <div v-else class="content">
-                    {{item.nom}}
+                    {{item.username}}
                 </div>
             </h4></td>
             <td>
@@ -42,10 +47,10 @@
             <td>
                 <h4 class="ui image header">
                 <div v-if="item.id == userId" class="content" id="user">
-                    {{item.nom}} 
+                    {{item.username}} 
                 </div>
                 <div v-else class="content">
-                    {{item.nom}}
+                    {{item.username}}
                 </div>
             </h4></td>
             <td>
@@ -78,12 +83,12 @@ export default {
     },
     methods : {
         loadClassement(tournoi) {
-        axios.get('http://localhost:9090/Tournoi/Classement/'+tournoi).then((response)=> {
+        axios.get('http://192.168.1.12:9090/Tournoi/Classement/'+tournoi).then((response)=> {
         this.classement=response.data
         },(response) => {console.log('erreur',response)
         })
         }, loadPoints(tournoi) {
-        axios.get('http://localhost:9090/Tournoi/ListePoints/'+ tournoi).then((response)=> 
+        axios.get('http://192.168.1.12:9090/Tournoi/ListePoints/'+ tournoi).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreurTournois',response)
             })
@@ -105,6 +110,7 @@ export default {
 
 <style scoped>
 #ClassementTournoi {
+    display:inline-block;
     margin-top : 30px;
     margin-bottom : 70px;
 }
