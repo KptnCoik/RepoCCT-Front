@@ -47,13 +47,13 @@ export default {
     },
     methods: {
         loadJoueur(id) {
-            axios.get('http://192.168.1.12:9090/Joueur/'+id).then((response)=> {
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/'+id).then((response)=> {
             this.user=response.data
             },(response) => {console.log('erreur',response)
             })
         },
         loadTournois(id) {
-            axios.get('http://192.168.1.12:9090/Joueur/Tournois/'+id).then((response)=> {
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/Tournois/'+id).then((response)=> {
             this.tournois=response.data
             },(response) => {console.log('erreur',response)
             })
@@ -62,7 +62,7 @@ export default {
             this.tournoisSelected = id
         },
         setImageUrl() {
-            return 'http://192.168.1.12:9090/filesByJoueur/'+this.user.id;
+            return 'http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/filesByJoueur/'+this.user.id;
         }
     }
 }

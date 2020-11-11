@@ -37,7 +37,7 @@ export default {
     },
     methods : {
         loadEpreuves(epreuve) {
-        axios.get('http://192.168.1.12:9090/Tournoi/Epreuves/'+epreuve).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/Epreuves/'+epreuve).then((response)=> {
         this.epreuves=response.data
         },(response) => {console.log('erreur',response)
         })

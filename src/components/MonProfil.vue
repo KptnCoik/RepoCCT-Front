@@ -50,15 +50,15 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://192.168.1.12:9090/Joueur/Tournois/'+this.user.id).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/Tournois/'+this.user.id).then((response)=> {
         this.tournois=response.data
         },(response) => {console.log('erreur',response)
         })
-        axios.get('http://192.168.1.12:9090/filesByJoueur/'+this.user.id).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/filesByJoueur/'+this.user.id).then((response)=> {
         this.images=response.data
         },(response) => {console.log('erreur',response)
         })
-        this.lienImage = 'http://192.168.1.12:9090/filesByJoueur/'+this.user.id
+        this.lienImage = 'http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/filesByJoueur/'+this.user.id
     },
     methods : {
         setTournoiSelect(id) {

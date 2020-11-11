@@ -54,22 +54,22 @@ export default {
     },
     methods : {
         loadClassement(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/Classement/'+epreuve).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/Classement/'+epreuve).then((response)=> {
         this.classement=response.data
         },(response) => {console.log('erreur',response)
         })
         }, loadPoints(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListPointsEquipe/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListPointsEquipe/'+ epreuve).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreurTournois',response)
             })
       },loadPosition(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListPositionEpreuveEquipe/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListPositionEpreuveEquipe/'+ epreuve).then((response)=> 
             {   this.position = response.data
             },(response) => {console.log('erreurTournois',response)
             })
       }, loadBonus(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListBonusEpreuve/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListBonusEpreuve/'+ epreuve).then((response)=> 
             {   this.bonus = response.data
             },(response) => {console.log('erreur bonus',response)
             })

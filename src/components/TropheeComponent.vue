@@ -71,13 +71,13 @@ export default {
     },
     methods: {
         loadTrophees(id) {
-        axios.get('http://192.168.1.12:9090/Trophee/Joueur/'+id).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Trophee/Joueur/'+id).then((response)=> {
         this.trophees=response.data
         },(response) => {console.log('erreur',response)
         })
         },
         loadTournoiGagne(id) {
-        axios.get('http://192.168.1.12:9090/Joueur/TournoiGagne/'+id).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/TournoiGagne/'+id).then((response)=> {
         this.tournoiGagne=response.data
         if(response.data.annee!=null) {
             this.$parent.gagne=response.data
@@ -86,7 +86,7 @@ export default {
         })
         },
         loadTournoiPerd(id) {
-        axios.get('http://192.168.1.12:9090/Joueur/TournoiPerd/'+id).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/TournoiPerd/'+id).then((response)=> {
         this.tournoiPerd=response.data
         if(response.data.annee!=null) {
             this.$parent.perd=response.data

@@ -83,12 +83,12 @@ export default {
     },
     methods : {
         loadClassement(tournoi) {
-        axios.get('http://192.168.1.12:9090/Tournoi/Classement/'+tournoi).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/Classement/'+tournoi).then((response)=> {
         this.classement=response.data
         },(response) => {console.log('erreur',response)
         })
         }, loadPoints(tournoi) {
-        axios.get('http://192.168.1.12:9090/Tournoi/ListePoints/'+ tournoi).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/ListePoints/'+ tournoi).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreurTournois',response)
             })

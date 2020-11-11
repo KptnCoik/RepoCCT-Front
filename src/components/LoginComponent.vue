@@ -50,7 +50,7 @@ export default {
     methods: {
         login() {
             if(this.input.username != "" && this.input.password != "") {
-                axios.get('http://192.168.1.12:9090/Joueur/SignInS/'+ this.input.username+'/'+ this.input.password).then((response)=> {
+                axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/SignInS/'+ this.input.username+'/'+ this.input.password).then((response)=> {
                     this.$localStorage.set('user', JSON.stringify(response.data))
                     this.$localStorage.set('idUser', JSON.stringify(response.data.id))
                     this.refus=false

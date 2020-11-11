@@ -58,27 +58,27 @@ export default {
     },
     methods : {
         loadClassement(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/Classement/'+epreuve).then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/Classement/'+epreuve).then((response)=> {
         this.classement=response.data
         },(response) => {console.log('erreur',response)
         })
         }, loadPoints(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListPointsIndividuel/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListPointsIndividuel/'+ epreuve).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreurTournois',response)
             })
       },loadPosition(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListPositionEpreuveIndividuelle/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListPositionEpreuveIndividuelle/'+ epreuve).then((response)=> 
             {   this.position = response.data
             },(response) => {console.log('erreurTournois',response)
             })
       }, loadBonus(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListBonusEpreuve/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListBonusEpreuve/'+ epreuve).then((response)=> 
             {   this.bonus = response.data
             },(response) => {console.log('erreur bonus',response)
             })
       }, loadMalus(epreuve) {
-        axios.get('http://192.168.1.12:9090/Epreuve/ListMalusEpreuve/'+ epreuve).then((response)=> 
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Epreuve/ListMalusEpreuve/'+ epreuve).then((response)=> 
             {   this.malus = response.data
             },(response) => {console.log('erreur malus',response)
             })

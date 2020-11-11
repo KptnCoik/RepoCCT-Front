@@ -36,14 +36,14 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://192.168.1.12:9090/Joueur/all/').then((response)=> {
+        axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/all/').then((response)=> {
         this.liste=response.data
         },(response) => {console.log('erreur',response)
         })
     },
     methods : {
         setImageUrl(id) {
-            return 'http://192.168.1.12:9090/filesByJoueur/'+id;
+            return 'http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/filesByJoueur/'+id;
         }
     }
 }

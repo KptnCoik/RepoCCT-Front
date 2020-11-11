@@ -82,55 +82,55 @@ export default {
     },
     methods: {
         loadTournoi(id) {
-            axios.get('http://192.168.1.12:9090/Tournoi/'+id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/'+id).then((response)=> 
             {   this.tournoi = response.data
             },(response) => {console.log('erreur points',response)
             })
         },
         loadPoints(id,joueur) {
-               axios.get('http://192.168.1.12:9090/Joueur/PointsTournoi/'+joueur+'/'+id).then((response)=> 
+               axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/PointsTournoi/'+joueur+'/'+id).then((response)=> 
             {   this.points = response.data
             },(response) => {console.log('erreur points',response)
             })
         },
         loadPosition(id,joueur) {
-            axios.get('http://192.168.1.12:9090/Joueur/PositionTournoi/'+joueur+'/'+ id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/PositionTournoi/'+joueur+'/'+ id).then((response)=> 
                 {   this.position = response.data
                 },(response) => {console.log('erreur position',response)
                 })
         }, loadTrophee(id,joueur) {
-            axios.get('http://192.168.1.12:9090/Trophee/'+id+'/'+ joueur).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Trophee/'+id+'/'+ joueur).then((response)=> 
                 {   this.trophees = response.data
                 },(response) => {console.log('erreur position',response)
                 })
         }, loadEpreuves(id) {
-            axios.get('http://192.168.1.12:9090/Tournoi/Epreuves/'+id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/Epreuves/'+id).then((response)=> 
                 {   this.epreuves = response.data
                 },(response) => {console.log('erreur epreuves',response)
                 })
                 
         }, loadNbrJoueur(id) {
-            axios.get('http://192.168.1.12:9090/Tournoi/NombreJoueur/'+id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/NombreJoueur/'+id).then((response)=> 
                 {   this.nbrJoueur = response.data
                 },(response) => {console.log('erreur epreuves',response)
                 })
         },loadBonus(id,joueur) {
-            axios.get('http://192.168.1.12:9090/Joueur/Bonus/'+joueur+'/'+id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/Bonus/'+joueur+'/'+id).then((response)=> 
                 {   this.bonus = response.data
                 },(response) => {console.log('erreur bonus',response)
                 })
         },loadMalus(id,joueur) {
-            axios.get('http://192.168.1.12:9090/Joueur/Malus/'+joueur+'/'+id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Joueur/Malus/'+joueur+'/'+id).then((response)=> 
                 {   this.malus = response.data
                 },(response) => {console.log('erreur malus',response)
                 })
         },loadGagnant(id){
-                axios.get('http://192.168.1.12:9090/Tournoi/Gagnant/'+id).then((response)=> 
+                axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/Gagnant/'+id).then((response)=> 
                 {   this.gagnant = response.data
                 },(response) => {console.log('erreur malus',response)
                 }) 
         }, loadPerdant(id) {
-            axios.get('http://192.168.1.12:9090/Tournoi/Perdant/'+id).then((response)=> 
+            axios.get('http://cctprod-env.eba-qnvihvzw.us-east-2.elasticbeanstalk.com/Tournoi/Perdant/'+id).then((response)=> 
                 {   this.perdant = response.data
                 },(response) => {console.log('erreur malus',response)
                 }) 
